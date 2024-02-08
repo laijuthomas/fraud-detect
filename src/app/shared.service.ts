@@ -14,4 +14,8 @@ export class SharedService {
   getIpAndLocation(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  public getIPAddress() {
+    return this.http.get<{ ip: string }>('https://jsonip.com/')
+  }
 }

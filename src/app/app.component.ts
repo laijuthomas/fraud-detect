@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   incognitoResult: any
   fraudSummary = {
     fingerprint: 0,
+    ip_address: '',
     incognito: false,
     user_agent: null,
     browser: {
@@ -51,14 +52,9 @@ export class AppComponent implements OnInit{
     // });
     
     // maliceDetect.init();
-
-    this.sharedService.getIpAndLocation().subscribe(response => {
-      console.log(response)
+    this.sharedService.getIPAddress().subscribe(result => {
+      this.fraudSummary.ip_address = result.ip;
     })
-    
-
-
-
 
     detectIncognito().then((result) => {
       this.incognitoResult = result;
